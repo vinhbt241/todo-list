@@ -1,0 +1,17 @@
+<div class="flex flex-col gap-8 mx-auto mb-20">
+  <h1 class="text-3xl font-bold">
+    Tasks
+  </h1>
+
+  <turbo-frame id="new-task">
+    <div class='flex justify-end'>
+      <%= link_to new_task_path, class: 'flex items-center gap-2 p-2 bg-blue-500 rounded-lg text-white' do %>
+        <i class="fa-solid fa-plus"></i>
+        <span>New task</span>
+      <% end %>
+    </div>
+  </turbo-frame>
+
+    <%= render partial: 'collection', locals: { tasks: @tasks } %>
+  </div>
+</div>

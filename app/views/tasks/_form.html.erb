@@ -1,0 +1,48 @@
+<%= form_with model: task, html: { id: 'task_form' } do |f| %>
+  <div class="flex border border-black rounded-lg overflow-hidden">
+    <div class="flex gap-8 items-center p-6 rounded-l-lg">
+      <div class="flex flex-col gap-4">
+        <div class="flex flex-col">
+          <%= f.label :title %>
+          <%= f.text_field :title, required: true %>
+        </div>
+        <div class="flex flex-col">
+          <%= f.label :sub_title, "Subtitle" %>
+          <%= f.text_field :sub_title, required: true %>
+        </div>
+      </div>
+      <div class="flex flex-col gap-2">
+        <%= f.label :priority %>
+        <ul class="flex flex-col border border-gray-500 rounded-lg overflow-hidden">
+          <li class="p-3 border-b border-gray-500 flex items-center gap-3 <%= task_priority_badge_style(:high) %>">
+            <%= f.radio_button :priority, 'high' %>
+            <span class="text-xs font-bold">HIGH PRIORITY</span>
+          </li>
+          <li class="p-3 border-b border-gray-500 flex items-center gap-3 <%= task_priority_badge_style(:medium) %>">
+            <%= f.radio_button :priority, 'medium' %>
+            <span class="text-xs font-bold">MEDIUM PRIORITY</span>
+          </li>
+          <li class="p-3 flex items-center gap-3 <%= task_priority_badge_style(:low) %>">
+            <%= f.radio_button :priority, 'low' %>
+            <span class="text-xs font-bold">LOW PRIORITY</span>
+          </li>
+        </ul>
+      </div>
+      <div  class="flex flex-col pt-2">
+        <%= f.label :due_date %>
+        <%= f.datetime_local_field :due_date, required: true %>
+      </div>
+    </div>
+
+    <div class="flex flex-col flex justify-center px-3 items-center bg-blue-500 text-white font-bold break-words">
+      <%= button_tag type: :submit, class: 'h-full cursor-pointer' do %>
+        <i class="fa-solid fa-plus"></i>
+      <% end %>
+    </div>
+    <div class="flex flex-col flex justify-center px-3 items-center bg-gray-500 text-white font-bold break-words">
+      <%= link_to tasks_path, class: 'h-full cursor-pointer flex justify-center items-center' do %>
+        <i class="fa-solid fa-xmark"></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,7 @@
+<div class="flex flex-col gap-8" id="tasks">
+  <% tasks.each do |task| %>
+    <turbo-frame id="task-<%= task.id %>">
+      <%= render partial: 'item', locals: { task: } %>
+    </turbo-frame>
+  <% end %>
+</div>

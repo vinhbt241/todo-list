@@ -1,11 +1,24 @@
 # frozen_string_literal: true
 
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+ActiveRecord::Base.transaction do
+  Task.create(
+    title: 'Call references',
+    sub_title: 'Job: ABC123 - UX Designer',
+    priority: Task.priorities[:high],
+    due_date: DateTime.current + 2.days
+  )
+
+  Task.create(
+    title: 'Conduct police check & send emails',
+    sub_title: 'Application: 1280349 - Calliope Maddison',
+    priority: Task.priorities[:medium],
+    due_date: DateTime.current + 2.days
+  )
+
+  Task.create(
+    title: 'Ask candidates about driver licenses and blue card',
+    sub_title: 'Job: ABC321 - Aboriginal - Family Partnership Worker',
+    priority: Task.priorities[:low],
+    due_date: DateTime.current + 2.days
+  )
+end

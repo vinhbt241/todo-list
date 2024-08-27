@@ -1,0 +1,41 @@
+<div class="flex items-center gap-8">
+  <div class="flex items-center justify-center">
+    <%= form_with model: task, data: { turbo_frame: "_top" } do |f| %>
+      <%= f.hidden_field :status, value: "completed" %>
+      <%= button_tag type: :submit, class: "w-5 h-5 border border-black" do %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="flex flex-col w-96">
+    <span class="text-xl font-bold text-wrap">
+      <%= task.title %>
+    </span>
+    <p class="text-gray-700 text-wrap">
+      <%= task.sub_title %>
+    </p>
+  </div>
+  <div class="w-32">
+    <span class="h-9 rounded-full flex items-center justify-center text-xs font-bold <%= task_priority_badge_style(task.priority) %>">
+      <%= task_priority_text(task.priority) %>
+    </span>
+  </div>
+  <div class="w-64">
+    <% if task.due_date.present? %>
+      <span class="h-9 rounded-full flex items-center gap-2 justify-center text-sm bg-gray-50 text-gray-500">
+          <i class="fa-regular fa-clock"></i>
+          <span><%= task.due_date.strftime("%a, %-d %b %Y, %l:%M%P") %></span>
+      </span>
+    <% end %>
+  </div>
+
+  <div class="flex flex-col gap-2">
+    <%= link_to edit_task_path(task), class: "flex items-center gap-2" do %>
+      <i class="fa-solid fa-gear"></i>
+      <span>Edit</span>
+    <% end %>
+    <%= button_to task_path(task), method: :delete, class: "flex items-center gap-2", data: { turbo_confirm: "Are you sure?", turbo_frame: "_top" } do %>
+      <i class="fa-solid fa-trash"></i>
+      <span>Remove</span>
+    <% end %>
+  </div>
+</div>

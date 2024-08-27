@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 ruby '3.1.2'
 
 gem 'bootsnap', require: false
+gem 'font-awesome-sass'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'pg', '~> 1.1'
