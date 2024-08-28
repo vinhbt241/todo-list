@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
+A to-do list project developed for the NetEngine assignment.
+![todo-list-illustration](docs/assets/todo-list.PNG)
 
-Things you may want to cover:
+## Tech stack
+- Ruby [3.1.2]
+- Rails [7.1.4]
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## How to run
+- Clone the project
+- Add your PostgresSQL credentials to `database.yml` file
+- Run `bundle install`
+- Run `rails db:setup`
+- To start local server, run `./bin/dev`
